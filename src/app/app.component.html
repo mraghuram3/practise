@@ -12,7 +12,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                     <a class="navbar-brand" style="color:white !important" >Total Placs :{{count}}</a>
+                     <a class="navbar-brand" style="color:white !important" >Total Places : {{count}}</a>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -48,7 +48,7 @@
 
 <div style="padding-top: 50px !important;">
 <div class="row list-group" *ngFor="let place of places | paginate: { itemsPerPage: 6, currentPage: p };let i = index">
-  <div class="list-group-item col-sm-8 col-sm-offset-2" >{{place.name}} <br> Category: {{place.category}} | Locate on Map <a target="_blank" href={{mapurl+place.latitude+separtor+place.longitude}} ><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></a> <rating [(ngModel)]="place.rating" [max]="max" class="pull-right" [readonly]="isReadonly">{{place.rating}}</rating></div>
+  <div class="list-group-item col-sm-8 col-sm-offset-2" >{{place.name}} <br> Category: {{place.category}} | Locate on Map <a target="_blank" href={{mapurl+place.latitude+separtor+place.longitude}} ><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></a> <div class="pull-right">{{place.rating}}<rating [(ngModel)]="place.rating" [max]="max"  [readonly]="isReadonly"></rating></div></div>
 </div>
 </div>
 
