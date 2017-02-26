@@ -1,5 +1,10 @@
 const path = require('path');
 const express = require('express');
+const http = require('http');
+const bodyParser = require('body-parser');
+
+const api = require('./server/routes/api');
+
 const app = express();
 
 // If an incoming request uses
@@ -20,9 +25,15 @@ const forceSSL = function() {
 // middleware
 app.use(forceSSL());
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // Run the app by serving the static files
 // in the dist directory
 app.use(express.static(__dirname + '/dist'));
+
+
+app.use('/api', api);
 
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
