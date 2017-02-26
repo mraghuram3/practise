@@ -3,41 +3,56 @@ const router = express.Router();
 
 var MongoClient = require('mongodb').MongoClient
 
-//const axios = require('axios');
-
-//var Place = require('./server/models/place');
+var Place = require('../models/place');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
-    MongoClient.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump', function (err, db) {
+  res.send('api works');
+});
+
+
+router.get('/list', (req, res) => {
+     MongoClient.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump', function (err, db) {
   if (err) throw err
 
   db.collection('nearyby').find().toArray(function (err, result) {
     if (err) throw err
 
     console.log(result)
+    db.close();
+    res.send(result);
   })
 })
-  res.send('api works');
 });
 
+router.get('/count', (req, res) => {
+     MongoClient.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump', function (err, db) {
+  if (err) throw err
+  
+  db.collection('nearyby').find().toArray(function (err, result) {
+    if (err) throw err
 
-router.get('/list', (req, res) => {
-  //Get posts from the mock api
-  //This should ideally be replaced with a service that connects to MongoDB
-//   axios.get(`${API}/list`)
-//     .then(list => {
-//       res.status(200).json(list.data);
-//     })
-//     .catch(error => {
-//       res.status(500).send(error)
-//     });
-Place.find({}, function(err, places) {
-  if (err) throw err;
-
-  // object of all the users
-  console.log(places);
+    console.log(result);
+    var collection = db.collection( 'nearyby' );
+  collection.count({  },	  
+	  function(err, result) {
+        console.log(result);
+        
+         res.send("count:"+result);
+	  }
+  );
+    
+  })
+})
 });
-});
+var simpleCount = function(db, callback) {
+  var collection = db.collection( 'nearyby' );
+  collection.count({  },	  
+	  function(err, result) {
+        console.log(result)
+        callback(result);
+      }
+  );
+}
 
 module.exports = router;
