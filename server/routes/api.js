@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-
+var MongoClient = require('mongodb').MongoClient
 
 //const axios = require('axios');
 
@@ -9,12 +9,7 @@ const router = express.Router();
 
 /* GET api listing. */
 router.get('/', (req, res) => {
-  res.send('api works');
-});
-
-var MongoClient = require('mongodb').MongoClient
-
-MongoClient.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump', function (err, db) {
+    MongoClient.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump', function (err, db) {
   if (err) throw err
 
   db.collection('nearyby').find().toArray(function (err, result) {
@@ -23,10 +18,13 @@ MongoClient.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump', funct
     console.log(result)
   })
 })
+  res.send('api works');
+});
 
-//router.get('/list', (req, res) => {
-  // Get posts from the mock api
-  // This should ideally be replaced with a service that connects to MongoDB
+
+router.get('/list', (req, res) => {
+  //Get posts from the mock api
+  //This should ideally be replaced with a service that connects to MongoDB
 //   axios.get(`${API}/list`)
 //     .then(list => {
 //       res.status(200).json(list.data);
@@ -34,12 +32,12 @@ MongoClient.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump', funct
 //     .catch(error => {
 //       res.status(500).send(error)
 //     });
-// Place.find({}, function(err, places) {
-//   if (err) throw err;
+Place.find({}, function(err, places) {
+  if (err) throw err;
 
-//   // object of all the users
-//   console.log(places);
-// });
-//});
+  // object of all the users
+  console.log(places);
+});
+});
 
 module.exports = router;
