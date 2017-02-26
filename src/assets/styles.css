@@ -1,15 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 .navbar-custom,header .intro-text .name {
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    text-transform: uppercase;
-     background: #2C3E50;
-    font-weight: 700;
-    border: none;
-    color:white;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    text-transform: uppercase !important;
+     background: #2C3E50 !important;
+    font-weight: 700 !important;
+    border: none !important;
+    color:white !important;
 
 }
 body {
-    background: #18bc9c;
+    background: #18bc9c !important;
 }
 navbar-brand
 {
