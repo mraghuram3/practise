@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const axios = require('axios');
+//const axios = require('axios');
 
-var Place = require('./server/models/place');
+//var Place = require('./server/models/place');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
