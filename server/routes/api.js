@@ -10,6 +10,17 @@ router.get('/', (req, res) => {
   res.send('api works');
 });
 
+var MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('mongodb://mraghuram:zxcvZXCV@9@ds161069.mlab.com:61069/dump', function (err, db) {
+  if (err) throw err
+
+  db.collection('nearyby').find().toArray(function (err, result) {
+    if (err) throw err
+
+    console.log(result)
+  })
+})
 
 //router.get('/list', (req, res) => {
   // Get posts from the mock api
