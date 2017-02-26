@@ -20,7 +20,9 @@ router.get('/list', (req, res) => {
 
     console.log(result)
     db.close();
-    res.send("results:"+result);
+     var obj=({data: result});
+     var body = JSON.stringify(obj);
+    res.send(result);
   })
 })
 });
@@ -37,8 +39,9 @@ router.get('/count', (req, res) => {
   collection.count({  },	  
 	  function(err, result) {
         console.log(result);
-        
-         res.send("results:"+result);
+        var obj=({data: result});
+        var body = JSON.stringify(obj);
+         res.send(body);
 	  }
   );
     
