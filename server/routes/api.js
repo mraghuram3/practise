@@ -3,7 +3,7 @@ const router = express.Router();
 
 const axios = require('axios');
 
-var Place = require('./server/models/ace');
+var Place = require('./server/models/place');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
