@@ -1,6 +1,19 @@
 <h1>
   {{title}}   {{count}}
 </h1>
+    <div class="input-group">
+     <div class="btn-group">
+  <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="name">Name</label>
+  <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="category">Category</label>
+</div>
+       <input type="text" [(ngModel)]="query" class="form-control" placeholder="Search for..." (keyup.enter)="search()">
+       <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="reset()"><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span></button>
+      </span>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" (click)="search()"><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span></button>
+      </span>
+    </div>
 <router-outlet></router-outlet>
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let place of places | paginate: { itemsPerPage: 6, currentPage: p };let i = index">{{place.name}} <rating [(ngModel)]="place.rating" [max]="max" [readonly]="isReadonly"></rating></li>

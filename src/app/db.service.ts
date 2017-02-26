@@ -23,6 +23,13 @@ export class DbService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+  search (query: string, prop: string): Observable<Place[]> {
+    var url = this.apiurl + 'search&q=' + query + ';&t=' + prop ;
+    console.log(url);
+    return this.http.get(url)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   private extractData(res: Response) {
     let body = res.json().data;
     console.log(body);

@@ -12,8 +12,11 @@ export class AppComponent {
   title = 'Place Lookup';
   errorMessage: string;
   places: Place[] = new Array<Place>();
+  backupPlaces: Place[] = new Array<Place>();
   count: number = 0;
   max: number = 5;
+  query: string;
+  searchby: string = 'name';
   isReadonly: any = true;
   constructor(private dbservice: DbService) {
      this.getData();
@@ -21,7 +24,7 @@ export class AppComponent {
    }
    getData() {
      this.dbservice.getPlaces().subscribe(
-                       (data: any) => (this.places = data),
+                       (data: any) => (this.places = data, this.backupPlaces = data ),
                        error =>  this.errorMessage = <any>error);
    }
    getCount() {
@@ -29,5 +32,17 @@ export class AppComponent {
                        (data: any) => (this.count = data),
                        error =>  this.errorMessage = <any>error);
    }
-
+   search()
+   {
+     if ( this.query.length === 0) {
+        this.places = this.backupPlaces;
+      } else {
+     this.dbservice.search(this.query, this.searchby).subscribe(
+                       (data: any) => (this.places = data),
+                       error =>  this.errorMessage = <any>error);}
+   }
+   reset()
+   {
+     this.places = this.backupPlaces;
+   }
 }

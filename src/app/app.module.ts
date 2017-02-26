@@ -10,7 +10,7 @@ import {DbService} from './db.service';
 
 import {Ng2PaginationModule} from 'ng2-pagination';
 
-import { RatingModule  } from 'ng2-bootstrap';
+import { RatingModule, ButtonsModule   } from 'ng2-bootstrap';
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +19,7 @@ import { RatingModule  } from 'ng2-bootstrap';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,RatingModule.forRoot(),Ng2PaginationModule
+    AppRoutingModule, RatingModule.forRoot(), Ng2PaginationModule, ButtonsModule.forRoot()
   ],
   providers: [DbService],
   bootstrap: [AppComponent]
