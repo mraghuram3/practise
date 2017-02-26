@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/list', (req, res) => {
+//router.get('/list', (req, res) => {
   // Get posts from the mock api
   // This should ideally be replaced with a service that connects to MongoDB
 //   axios.get(`${API}/list`)
@@ -21,12 +21,12 @@ router.get('/list', (req, res) => {
 //     .catch(error => {
 //       res.status(500).send(error)
 //     });
-Place.find({}, function(err, places) {
-  if (err) throw err;
+// Place.find({}, function(err, places) {
+//   if (err) throw err;
 
-  // object of all the users
-  console.log(places);
-});
-});
+//   // object of all the users
+//   console.log(places);
+// });
+//});
 
 module.exports = router;
