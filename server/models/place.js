@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://mraghuram:zxcvZXCV@9@ds161069.mlab.com:61069/dump');
+ mongoose.connect('mongodb://raghu:balaji@ds161069.mlab.com:61069/dump');
 
-// var Schema = mongoose.Schema;
+ var Schema = mongoose.Schema;
 
 // // create a schema
 var placeSchema = new Schema({
