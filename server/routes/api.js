@@ -22,6 +22,7 @@ router.get('/list', (req, res) => {
     db.close();
      var obj=({data: result});
      var body = JSON.stringify(obj);
+     res.header("Content-Type", "application/json");
     res.send(body);
   })
 })
@@ -41,6 +42,7 @@ router.get('/count', (req, res) => {
         console.log(result);
         var obj=({data: result});
         var body = JSON.stringify(obj);
+        res.header("Content-Type", "application/json");
          res.send(body);
 	  }
   );
