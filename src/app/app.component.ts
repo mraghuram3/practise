@@ -18,6 +18,9 @@ export class AppComponent {
   query: string;
   searchby: string = 'name';
   isReadonly: any = true;
+  mapurl: string = "http://maps.google.com?q=";
+  separtor: string = ',';
+
   constructor(private dbservice: DbService) {
      this.getData();
      this.getCount();
@@ -44,5 +47,11 @@ export class AppComponent {
    reset()
    {
      this.places = this.backupPlaces;
+   }
+   resetOnKey()
+   {
+     if ( this.query.length === 0) {
+        this.places = this.backupPlaces;
+      }
    }
 }
