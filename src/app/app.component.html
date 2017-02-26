@@ -23,11 +23,11 @@
 <div class="row" style="margin-top: 100px !important;">
 <div class=" col-sm-8 col-sm-offset-2" style="padding: 0 !important;">
 <div class="row">
-      <div class="btn-group col-sm-2">
+      <div class="btn-group col-sm-3">
         <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="name">Name</label>
         <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="category">Category</label>
       </div>
-      <div class="btn-group col-sm-8" style="padding:0px! important">
+      <div class="btn-group col-sm-7" style="padding:0px! important">
        <input type="text" [(ngModel)]="query" class="form-control col-lg-6" placeholder="Search for..." (keyup.enter)="search()" (keyup)="resetOnKey()">
        </div>
        <!--<div class="btn-group col-sm-1">
@@ -47,7 +47,7 @@
 <router-outlet></router-outlet>
 
 <div style="padding-top: 50px !important;">
-<div class="row list-group" *ngFor="let place of places | paginate: { itemsPerPage: 6, currentPage: p };let i = index">
+<div class="row list-group" *ngFor="let place of places | paginate: { itemsPerPage: 5, currentPage: p };let i = index">
   <div class="list-group-item col-sm-8 col-sm-offset-2" >{{place.name}} <br> Category: {{place.category}} | Locate on Map <a target="_blank" href={{mapurl+place.latitude+separtor+place.longitude}} ><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></a> <div class="pull-right">{{place.rating}}<rating [(ngModel)]="place.rating" [max]="max"  [readonly]="isReadonly"></rating></div></div>
 </div>
 </div>
