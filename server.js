@@ -19,13 +19,7 @@ const forceSSL = function() {
     next();
   }
 }
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'example.com');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-    //next();
-}
 // Instruct the app
 // to use the forceSSL
 // middleware
@@ -33,7 +27,7 @@ app.use(forceSSL());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(allowCrossDomain);
+
 // Run the app by serving the static files
 // in the dist directory
 app.use(express.static(__dirname + '/dist'));
