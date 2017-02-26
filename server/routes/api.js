@@ -3,7 +3,7 @@ const router = express.Router();
 
 var MongoClient = require('mongodb').MongoClient
 
-var Place = require('../models/place');
+//var Place = require('../models/place');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -45,14 +45,6 @@ router.get('/count', (req, res) => {
   })
 })
 });
-var simpleCount = function(db, callback) {
-  var collection = db.collection( 'nearyby' );
-  collection.count({  },	  
-	  function(err, result) {
-        console.log(result)
-        callback(result);
-      }
-  );
-}
+
 
 module.exports = router;
