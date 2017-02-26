@@ -14,12 +14,17 @@ export class DbService {
     constructor(private http: Http){
     }
      getPlaces (): Observable<Place[]> {
-    return this.http.get(this.apiurl)
+    return this.http.get(this.apiurl + 'list')
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+    getCount (): Observable<number> {
+    return this.http.get(this.apiurl + 'count')
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   private extractData(res: Response) {
-    let body = res.json();
+    let body = res.json().data;
     console.log(body);
     return body;
   }

@@ -9,15 +9,24 @@ import {Place} from './model/place';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Place Lookup';
   errorMessage: string;
   places: Place[] = new Array<Place>();
+  count: number = 0;
+  max: number = 5;
+  isReadonly: any = true;
   constructor(private dbservice: DbService) {
      this.getData();
+     this.getCount();
    }
-   getData(){
+   getData() {
      this.dbservice.getPlaces().subscribe(
                        (data: any) => (this.places = data),
+                       error =>  this.errorMessage = <any>error);
+   }
+   getCount() {
+     this.dbservice.getCount().subscribe(
+                       (data: any) => (this.count = data),
                        error =>  this.errorMessage = <any>error);
    }
 

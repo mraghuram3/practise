@@ -1,4 +1,8 @@
 <h1>
-  {{title}}
+  {{title}}  
 </h1>
 <router-outlet></router-outlet>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let place of places | paginate: { itemsPerPage: 6, currentPage: p };let i = index">{{place.name}} <rating [(ngModel)]="place.rating" [max]="max" [readonly]="isReadonly"></rating></li>
+</ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

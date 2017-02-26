@@ -7,6 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {DbService} from './db.service';
+
+import {Ng2PaginationModule} from 'ng2-pagination';
+
+import { RatingModule  } from 'ng2-bootstrap';
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +19,7 @@ import {DbService} from './db.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,RatingModule.forRoot(),Ng2PaginationModule
   ],
   providers: [DbService],
   bootstrap: [AppComponent]
