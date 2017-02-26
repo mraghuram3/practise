@@ -20,7 +20,7 @@ router.get('/list', (req, res) => {
 
     console.log(result)
     db.close();
-    res.send(result);
+    res.send("results:"+result);
   })
 })
 });
@@ -38,7 +38,7 @@ router.get('/count', (req, res) => {
 	  function(err, result) {
         console.log(result);
         
-         res.send("count:"+result);
+         res.send("results:"+result);
 	  }
   );
     

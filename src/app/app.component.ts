@@ -17,7 +17,7 @@ export class AppComponent {
    }
    getData(){
      this.dbservice.getPlaces().subscribe(
-                       (data: any) =>(this.places = data),
+                       (data: any) => (this.places = data),
                        error =>  this.errorMessage = <any>error);
    }
 

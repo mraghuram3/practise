@@ -19,7 +19,7 @@ export class DbService {
                     .catch(this.handleError);
   }
   private extractData(res: Response) {
-    let body = res.json();
+    let body = res.json().results;
     console.log(body);
     return body;
   }
