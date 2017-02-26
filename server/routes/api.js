@@ -22,7 +22,7 @@ router.get('/list', (req, res) => {
     db.close();
      var obj=({data: result});
      var body = JSON.stringify(obj);
-    res.send(result);
+    res.send(body);
   })
 })
 });
