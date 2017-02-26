@@ -5,9 +5,10 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "test": "ng test",
     "lint": "ng lint",
+    "postinstall": "ng build --prod",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -15,12 +16,18 @@
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
     "@angular/core": "^2.4.0",
+    "@angular/cli": "1.0.0-beta.32.3",
     "@angular/forms": "^2.4.0",
     "@angular/http": "^2.4.0",
     "@angular/platform-browser": "^2.4.0",
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
+    "axios": "^0.15.3",
+    "body-parser": "^1.16.1",
+    "typescript": "~2.0.3",
     "core-js": "^2.4.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.4",
     "rxjs": "^5.1.0",
     "zone.js": "^0.7.6"
   },
@@ -42,5 +49,9 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "~2.0.0"
-  }
+  },
+  "engines": {
+  "node": "7.5.0",
+  "npm": "4.1.2"
+}
 }
