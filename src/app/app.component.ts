@@ -9,6 +9,8 @@ import {Place} from './model/place';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  // variables to store data
   title = 'Place Lookup';
   errorMessage: string;
   places: Place[] = new Array<Place>();
@@ -22,6 +24,7 @@ export class AppComponent {
   separtor: string = ',';
 
   constructor(private dbservice: DbService) {
+    // to get lookup list and count on load
      this.getData();
      this.getCount();
    }
@@ -35,6 +38,7 @@ export class AppComponent {
                        (data: any) => (this.count = data),
                        error =>  this.errorMessage = <any>error);
    }
+   // get input from textfield and load reults
    search()
    {
      if ( this.query.length === 0) {
@@ -44,10 +48,12 @@ export class AppComponent {
                        (data: any) => (this.places = data),
                        error =>  this.errorMessage = <any>error);}
    }
+   // to reset search result
    reset()
    {
      this.places = this.backupPlaces;
    }
+   // to reset search result when eveything from text input is deleted
    resetOnKey()
    {
      if ( this.query.length === 0) {

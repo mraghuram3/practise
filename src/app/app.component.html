@@ -1,61 +1,58 @@
 <div style="overflow:hidden">
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom affix-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" style="color:white !important">{{title}}</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                     <a class="navbar-brand" style="color:white !important" >Total Places : {{count}}</a>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-<div class="row" style="margin-top: 100px !important;">
-<div class=" col-sm-8 col-sm-offset-2" style="padding: 0 !important;">
-<div class="row">
-      <div class="btn-group col-sm-3">
-        <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="name">Name</label>
-        <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="category">Category</label>
+   <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom affix-top">
+      <div class="container">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" style="color:white !important">{{title}}</a>
+         </div>
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+               <a class="navbar-brand" style="color:white !important" >Total Places : {{count}}</a>
+            </ul>
+         </div>
+         <!-- /.navbar-collapse -->
       </div>
-      <div class="btn-group col-sm-7" style="padding:0px! important">
-       <input type="text" [(ngModel)]="query" class="form-control col-lg-6" placeholder="Search for..." (keyup.enter)="search()" (keyup)="resetOnKey()">
-       </div>
-       <!--<div class="btn-group col-sm-1">
-       <span class="input-group-btn col-lg-1">
-        
-      </span>
-       </div>-->
-       <div class="btn-group col-sm-2"  style="padding:0px! important">
-      <span class="input-group-btncol-lg-1">
-        <button class="btn btn-default " type="button" (click)="reset()"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-        <button class="btn btn-default" type="button" (click)="search()"><span class="glyphicon glyphicon-search" aria-hidden="true" ></span></button>
-      </span>
-       </div>
-    </div>
-  </div>
-</div>
-<router-outlet></router-outlet>
+      <!-- /.container-fluid -->
+   </nav>
 
-<div style="padding-top: 50px !important;">
-<div class="row list-group" *ngFor="let place of places | paginate: { itemsPerPage: 5, currentPage: p };let i = index">
-  <div class="list-group-item col-sm-8 col-sm-offset-2" >{{place.name}} <br> Category: {{place.category}} | Locate on Map <a target="_blank" href={{mapurl+place.latitude+separtor+place.longitude}} ><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></a> <div class="pull-right">{{place.rating}}<rating [(ngModel)]="place.rating" [max]="max"  [readonly]="isReadonly"></rating></div></div>
-</div>
-</div>
+<!--search bar and filter-->
 
-
-<div class="row">
-<div class=" col-sm-4 col-sm-offset-4" style="padding: 0 !important;">
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
-</div>
+   <div class="row" style="margin-top: 100px !important;">
+      <div class=" col-sm-8 col-sm-offset-2" style="padding: 0 !important;">
+         <div class="row">
+            <div class="btn-group col-sm-3">
+               <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="name">Name</label>
+               <label class="btn btn-primary" [(ngModel)]="searchby" btnRadio="category">Category</label>
+            </div>
+            <div class="btn-group col-sm-7" style="padding:0px! important">
+               <input type="text" [(ngModel)]="query" class="form-control col-lg-6" placeholder="Search for..." (keyup.enter)="search()" (keyup)="resetOnKey()">
+            </div>
+            <div class="btn-group col-sm-2"  style="padding:0px! important">
+               <span class="input-group-btncol-lg-1">
+               <button class="btn btn-default " type="button" (click)="reset()"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+               <button class="btn btn-default" type="button" (click)="search()"><span class="glyphicon glyphicon-search" aria-hidden="true" ></span></button>
+               </span>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--list items from db-->
+   <div style="padding-top: 50px !important;">
+      <div class="row list-group" *ngFor="let place of places | paginate: { itemsPerPage: 5, currentPage: p };let i = index">
+         <div class="list-group-item col-sm-8 col-sm-offset-2" >
+            {{place.name}} <br> Category: {{place.category}} | Locate on Map <a target="_blank" href={{mapurl+place.latitude+separtor+place.longitude}} ><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></a> 
+            <div class="pull-right">{{place.rating}}<rating [(ngModel)]="place.rating" [max]="max"  [readonly]="isReadonly"></rating></div>
+         </div>
+      </div>
+   </div>
+   <!--pagination-->
+   <div class="row">
+      <div class=" col-sm-4 col-sm-offset-4" style="padding: 0 !important;">
+         <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+   </div>
 </div>

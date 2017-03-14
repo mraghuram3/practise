@@ -1,3 +1,4 @@
+// model to store place object
 export class Place{
 _id: string;
 id: number;
